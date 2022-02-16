@@ -11,11 +11,34 @@ LIC_FILES_CHKSUM = "file://LICENSE;md5=bb6e931b02e57931863cefb015ae046c"
 
 FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}-${PV}:"
 
-SRCREV = "b1530274206291d993185951608e4f4ea3d11e49"
-SRC_URI = "git://github.com/burtyb/clusterhat-image.git"
+#SRCREV = "b1530274206291d993185951608e4f4ea3d11e49"
+#SRC_URI = "git://github.com/burtyb/clusterhat-image.git"
+
+SRCREV = "b5256c11b2bf48b7077c0ef710a6f623efce4865"
+SRC_URI = "git://github.com/ihatetoregister/clusterhat-image.git"
 
 S = "${WORKDIR}/git"
 
-#inherit autotools
+FILES_${PN} = "/usr/*"
 
-RDEPENDS_${PN} = "python3"
+do_compile() {
+}
+
+do_install() {
+    #install -d ${D}/${sbindir}
+    #install -m 0755 ${S}/files/usr/sbin/* ${D}/${sbindir}
+
+    #install -d ${D}/${datadir}/clusterctrl/
+    #install -m 0755 ${S}/files/usr/share/clusterctrl/* ${D}/${datadir}/clusterctrl/
+    
+    #install -d ${D}/${datadir}/clusterctrl/python/
+    #install -m 0755 ${S}/files/usr/share/clusterctrl/python/* ${D}/${datadir}/clusterctrl/python/
+
+    # TODO: Fix files are put in sbin/sbin
+    install -d ${D}/${sbindir}
+    install -d ${D}/${datadir}
+    cp -r --no-dereference --preserve=mode,links -v ${S}/files/usr/sbin/* ${D}/${sbindir}
+    cp -r --no-dereference --preserve=mode,links -v ${S}/files/usr/share/* ${D}/${datadir}
+}
+
+RDEPENDS_${PN} = " bash python3-core"
