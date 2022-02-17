@@ -41,4 +41,4 @@ do_install() {
     cp -r --no-dereference --preserve=mode,links -v ${S}/files/usr/share/* ${D}/${datadir}
 }
 
-RDEPENDS_${PN} = " bash python3-core"
+RDEPENDS_${PN} = " bash python3-core python3-smbus rpi-gpio"
