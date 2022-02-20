@@ -4,6 +4,8 @@ Yocto meta layer for ClusterHAT (Work in progress)
 ## Guide
 Use [this](https://jumpnowtek.com/rpi/Raspberry-Pi-Systems-with-Yocto.html) as base and add this layer for ClusterHAT support by adding it to the bblayers.conf and local.conf.
 
+For a complete config, see [this](https://github.com/ihatetoregister/yocto-pi-cluster)
+
 ## bblayers.conf
     ${HOME}/poky-dunfell/meta-clusterctrl \
 
